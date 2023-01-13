@@ -50,7 +50,10 @@ export default function SideBar(): JSX.Element {
       </div>
 
       {menuItems.map(({ label, icon }, i) => (
-        <div className="text-white flex xl:justify-start justify-end  align-center p-1 pr-2  cursor-pointer rounded-full">
+        <div
+          key={i}
+          className="text-white flex xl:justify-start justify-end  align-center p-1 pr-2  cursor-pointer rounded-full"
+        >
           <div className=" hover:bg-neutral-900 py-3 xl:pl-4 xl:pr-8 px-3 flex rounded-full">
             <div className="xl:mr-4">{icon}</div>
             <div className={`${i === 0 && "font-bold"} text-xl hidden xl:flex`}>
