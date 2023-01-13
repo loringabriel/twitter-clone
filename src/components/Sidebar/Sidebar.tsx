@@ -5,13 +5,13 @@ import {
   BellIcon,
 } from "@heroicons/react/24/solid";
 
-type MenuItems = {
+type MenuItem = {
   label: string;
-  icon: any;
+  icon: React.ReactNode;
   url: string;
 };
 
-const menuItems: MenuItems[] = [
+const menuItems: MenuItem[] = [
   {
     label: "Home",
     icon: <HomeIcon className="h-7 w-7 text-white-500" />,
