@@ -12,8 +12,27 @@ export type Tweet = {
   reach: number;
 };
 
-export const getTweets = (numberOfTweets: number): Tweet[] => {
-  return Array.from(Array(numberOfTweets).keys())
+export type TweetResponse = {
+  status: number;
+  response: Tweet[];
+};
+
+function timeout(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const random = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min)) + min;
+
+export const getTweets = async (
+  numberOfTweets: number
+): Promise<TweetResponse> => {
+  await timeout(random(300, 1200));
+
+  if (Math.random() < 0.05) {
+    return { status: 500, response: [] };
+  }
+  const generatedTweets = Array.from(Array(numberOfTweets).keys())
     .fill(0)
     .map(() => ({
       id: faker.datatype.uuid(),
@@ -26,4 +45,5 @@ export const getTweets = (numberOfTweets: number): Tweet[] => {
       comments: faker.datatype.number({ max: 10 }),
       reach: faker.datatype.number({ max: 1000 }),
     }));
+  return { status: 200, response: generatedTweets };
 };

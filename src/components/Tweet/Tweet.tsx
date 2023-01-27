@@ -18,7 +18,7 @@ export default function TweetComponent({ tweet }: TweetProps): JSX.Element {
         <img
           src={tweet.avatar}
           alt="avatar"
-          className="rounded-full w-11 h-11"
+          className="flex-none rounded-full w-11 h-11"
         />
         <div>
           <p>
